@@ -1,6 +1,7 @@
 # Import python packages
 import streamlit as st
 from snowflake.snowpark.functions import col
+import requests
 
 # Write directly to the app
 st.title(":cup_with_straw: Customize your smoothie! :cup_with_straw:")
@@ -30,3 +31,6 @@ time_to_submit = st.button("Submit Order")
 if time_to_submit:
     session.sql(my_insert_sql, [ingredients_string, name_on_smoothie]).collect()
     st.success("Your smoothie is ordered, %s" % name_on_smoothie, icon="✅")
+
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
