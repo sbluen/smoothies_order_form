@@ -34,6 +34,7 @@ for fruit in ingredients_list:
     st.stop()
     fv_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
     st.start()
+    st.dataframe(dv_df)
 
     
 
