@@ -31,6 +31,7 @@ for fruit in ingredients_list:
     
     st.subheader(fruit + " Nutrition information")
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + search_on)
+    fv_df = st.dataframe(smoothiefroot_response)
 
     
 
