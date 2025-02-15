@@ -30,7 +30,7 @@ for fruit in ingredients_list:
     st.write('The search value for ', fruit, ' is ', search_on, '.')
     
     st.subheader(fruit + " Nutrition information")
-    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit)
+    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + search_on)
 
     
 
