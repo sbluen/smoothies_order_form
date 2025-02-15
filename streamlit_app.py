@@ -26,7 +26,8 @@ for fruit in ingredients_list:
     ingredients_string += fruit + " "
     st.subheader(fruit + " Nutrition information")
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit)
-    st_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+    st_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True, col("search_on"))
+    st.stop()
 
     
 
