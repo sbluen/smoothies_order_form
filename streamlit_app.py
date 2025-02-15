@@ -24,7 +24,7 @@ ingredients_list = st.multiselect("Choose up to 5 ingredients:",
 ingredients_string = ""
 for fruit in ingredients_list:
     ingredients_string += fruit + " "
-    st.subheader(fruit_chosen + " Nutrition information")
+    st.subheader(fruit + " Nutrition information")
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit)
     st_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
