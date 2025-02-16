@@ -32,7 +32,7 @@ for fruit in ingredients_list:
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + search_on)
     df_fetched = pd.DataFrame(smoothiefroot_response.json())['nutrition']
     df_fetched.index.name = 'item'
-    df_fetched.rename('nutrition', 'quantity')
+    df_fetched.rename(columns={'nutrition', 'quantity'})
     st.dataframe(data=df_fetched, use_container_width=True)
 
 my_insert_sql = """INSERT INTO smoothies.public.orders(ingredients, name_on_order) VALUES (?, ?)"""
