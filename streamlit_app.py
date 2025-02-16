@@ -33,7 +33,7 @@ for fruit in ingredients_list:
     df_fetched = pd.DataFrame(smoothiefroot_response.json())
     df_fetched.index.name = 'item'
     df_fetched.rename(columns={'nutrition': 'quantity'})
-    st.dataframe(data=df_fetched['quantity', use_container_width=True)
+    st.dataframe(data=df_fetched['quantity'], use_container_width=True)
 
 my_insert_sql = """INSERT INTO smoothies.public.orders(ingredients, name_on_order) VALUES (?, ?)"""
 
