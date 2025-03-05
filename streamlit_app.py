@@ -29,7 +29,10 @@ for fruit in ingredients_list:
 
     st.subheader(fruit + " Nutrition information")
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + search_on)
-    fetched_df = pd.DataFrame(smoothiefroot_response.json())
+    try:
+        fetched_df = pd.DataFrame(smoothiefroot_response.json())
+    except ValueError:
+        st.write("This data is currrently unavailable")
 
     #Now it comes in 7 columns and we only want the nutrient name and amount
     fetched_df = pd.DataFrame(fetched_df['nutrition'].items(), columns=['nutrient', 'amount'])
