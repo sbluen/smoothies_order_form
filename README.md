@@ -1,1 +1,1 @@
-This is the web version of the smoothie order form. This can be previewed at https://smoothiesorderform-37voqeafu74mbf3yxddmxc.streamlit.app/#56aed667.
+This is the web version of the smoothie order form created as part of the Snowflake training courses. The form can be previewed at https://smoothiesorderform-37voqeafu74mbf3yxddmxc.streamlit.app/#56aed667.
