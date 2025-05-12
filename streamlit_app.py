@@ -35,7 +35,7 @@ for fruit in ingredients_list:
         fetched_df = pd.DataFrame(fetched_df['nutrition'].items(), columns=['nutrient', 'amount'])
         st.dataframe(data=fetched_df, use_container_width=True, hide_index=True)
     except ValueError:
-        logging.error("bad keyword? " + search_on)
+        st.write("bad keyword? " + search_on)
         st.write("This data is currrently unavailable.")
 
 my_insert_sql = """INSERT INTO smoothies.public.orders(ingredients, name_on_order) VALUES (?, ?)"""
