@@ -1,3 +1,4 @@
+import logging
 import streamlit as st
 from snowflake.snowpark.functions import col
 import requests
@@ -24,7 +25,7 @@ ingredients_string = ""
 for fruit in ingredients_list:
     ingredients_string += fruit + " "
 
-    search_on = pd_df.loc[pd_df['FRUIT_NAME'] == fruit, 'SEARCH_ON'].iloc[0] or fruit.lower()
+    search_on = pd_df.loc[pd_df['FRUIT_NAME'] == fruit, 'SEARCH_ON'].iloc[0] or fruit
 
     st.subheader(fruit + " Nutrition information")
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + search_on)
@@ -34,6 +35,7 @@ for fruit in ingredients_list:
         fetched_df = pd.DataFrame(fetched_df['nutrition'].items(), columns=['nutrient', 'amount'])
         st.dataframe(data=fetched_df, use_container_width=True, hide_index=True)
     except ValueError:
+        logging.error("bad keyword? " + search_on)
         st.write("This data is currrently unavailable.")
 
 my_insert_sql = """INSERT INTO smoothies.public.orders(ingredients, name_on_order) VALUES (?, ?)"""
