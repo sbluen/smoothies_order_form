@@ -26,11 +26,8 @@ for fruit in ingredients_list:
     ingredients_string += fruit + " "
 
     
-    retrieved = pd_df.loc[pd_df['FRUIT_NAME'] == fruit, 'SEARCH_ON'].iloc[0]
-    if type(retrieved) != str:
-        st.error("retrieved %s which is not a valid string" % retrieved)
-        continue
-    search_on = str(retrieved) or fruit
+    retrieved = pd_df.loc[pd_df['FRUIT_NAME'] == fruit, 'SEARCH_ON'].fillna('').iloc[0]
+    search_on = retrieved or fruit
 
     st.subheader(fruit + " Nutrition information")
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + search_on)
